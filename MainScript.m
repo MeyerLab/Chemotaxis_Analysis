@@ -61,11 +61,6 @@ for snum=1:length(subdir)
         timeData=(0:5:5*(length(filenames)-1))';
     end
     load([subfolder filesep 'masks and coors.mat'],'maskBGinitial','maskFinal','coors');
-    if min(cellfun(@(x) size(x,1),coors))>0
-        traj=ultTrackAnnSearch(coors,'pairrule','fwdbckmtch','maxdisp',100,'verbose',false);
-    else
-        traj={};
-    end
     fprintf('%i trajectories.\n',length(traj));
     for trajNum=1:length(traj)
         if size(traj{trajNum},1)>=20
@@ -212,11 +207,6 @@ for snum=1:length(subdir)
     FRETfile=filenames(boolRegExp(filenames,'FRET'));
     CFPfile=filenames(boolRegExp(filenames,'CFP'));
     load([subfolder filesep 'masks and coors.mat'],'maskBGinitial','maskFinal','coors');
-    if min(cellfun(@(x) size(x,1),coors))>0
-        traj=ultTrackAnnSearch(coors,'pairrule','fwdbckmtch','maxdisp',100,'verbose',false);
-    else
-        traj={};
-    end
     fprintf('%i trajectories.\n',length(traj));
     for trajNum=1:length(traj)
         if size(traj{trajNum},1)>=20
